@@ -210,7 +210,21 @@
 
         .rotate-btn {
             position: absolute;
-            bottom: 50px; right: 50px;
+            bottom: 50px; right: 100px;
+            width: 60px; height: 60px;
+            background-color: #aba72c;
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 200;
+            display: flex;
+            justify-content: center; /* 가로 중앙정렬 */
+            align-items: center; /* 세로 중앙정렬 */
+        }
+
+        .auto-btn {
+            position: absolute;
+            bottom: 50px; right: 30px;
             width: 60px; height: 60px;
             background-color: #aba72c;
             border: 2px solid white;
@@ -229,7 +243,8 @@
             transition-delay: 0.1s;
         }
         
-        .rotate-btn i {
+        .rotate-btn i,
+        .auto-btn i {
             font-size: 40px;
             color: white;
         }
@@ -374,6 +389,9 @@
 
         <span class="rotate-btn">
             <i class='bx bx-rotate-right'></i>
+        </span>
+        <span class="auto-btn">
+            <i class='bx bxs-cog'></i>
         </span>
     </div>
 
