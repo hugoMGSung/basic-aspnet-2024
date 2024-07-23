@@ -408,9 +408,28 @@ IoT 개발자과정 ASP.NET 리포지토리
                         ) AS base
                   WHERE base.rowNum BETWEEN 1 AND 10 -- 1과 10에 10씩 더하면 다음 페이지를 조회 쿼리
                 ```
-    4. HTML 에디터
-    5. 회원가입, 로그인....
-    6. 관리자모드/페이지
+            3. Index() 내 로직 수정
+            4. Views/Board/Index.cshtml 화면코드 수정
+
+    4. 검색
+        - FromSqlRaw() 메서드 변경
+        - html 링크에 ?page=1&search=검색어 추가
+
+    5. HTML 에디터
+        - Markdown 에디터
+        - simplemde(https://simplemde.com)
+        - _layout.cshtml에 js, css 링크만 추가
+        - 실제 사용페이지에서 특정 js만 실행
+        - Create.cshtml, Edit.cshtml은 동일하게 작업
+        - NuGet패키지 Westwind.AspNetCore.Markdown 검색
+
+        <img src="https://raw.githubusercontent.com/hugoMGSung/basic-aspnet-2024/main/images/an0006.png" width="600">        
+
+## 12일차
+- ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
+    0. 삭제로직 수정
+    1. 회원가입, 로그인....
+    2. 관리자모드/페이지
 
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Markdig;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -27,9 +28,9 @@ namespace MyPortfolio.Controllers
         // 화면으로 보낸다음에 출력하라
         // Views/Board/Index.cshtml을 화면에 뿌려라
         // return View(await _context.Board.ToListAsync());
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, string search = "")
         {
-            var totalCount = _context.Board.FromSql<Board>($"SELECT * FROM Board").Count(); // 총 글갯수
+            var totalCount = _context.Board.FromSqlRaw<Board>($"SELECT * FROM Board WHERE Title LIKE '%{search}%'").Count(); // 총 글갯수
             var countList = 10; // 페이지별 게시글수
             var totalPage = totalCount / countList; // 총 페이지 수
             if (totalCount % countList > 0) totalPage++; // 12 % 10 = 2 > 0 --> 한페이지가 더 필요
@@ -49,10 +50,12 @@ namespace MyPortfolio.Controllers
             ViewBag.EndPage = endPage;
             ViewBag.Page = page;
             ViewBag.TotalPage = totalPage;
+            ViewBag.TotalCount = totalCount; // 전체 글 갯수
+            ViewBag.Search = search; // 검색결과
 
             //var StartCount = new SqlParameter("@StartCount", startCount);
             //var EndCount = new SqlParameter("@EndCount", endCount);
-            var list = _context.Board.FromSql(@$"
+            var list = _context.Board.FromSqlRaw(@$"
                 SELECT *
                   FROM (
 		                SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) AS rowNum
@@ -65,9 +68,9 @@ namespace MyPortfolio.Controllers
 			                 , RegDate
 			                 , ModDate
 		                  FROM Board
+                         WHERE Title LIKE '%{search}%'
 	                   ) AS base
-                 WHERE base.rowNum BETWEEN {startCount} AND {endCount}
-            ").ToList();           
+                 WHERE base.rowNum BETWEEN {startCount} AND {endCount} ").ToList();           
 
 
             return View(list);
