@@ -376,8 +376,39 @@ IoT 개발자과정 ASP.NET 리포지토리
 
 ## 11일차(07.23)
 - ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
-    1. 게시글 삭제
-    2. 페이징!!
+    0. EntityFramework로 SQL 사용없이 DB 핸들링
+        - DbContext.Add(삽입), Update(수정), Remove(삭제) 기능 존재
+        - 위의 명령을 실행 후 DbContext.SaveChangesAsync() 실행해서 실제 DB에 반영
+        - ToListAsync(), FirstOrDefaultAsync()는 SELECT로 트랜잭션이 발생X. 그래서 SaveChangesAsync()를 실행X
+    1. 글 조회수 올리기
+    2. 게시글 삭제
+        - _layout.cshtml의  @await RenderSectionAsync("Scripts", required: false) 이 각 페이지에 필요시 스크립트영역을 만들어써라는 의미
+        - AJAX 삭제는 나중에 다시!!!
+    3. 페이징!!
+        - 웹사이트에서 가장 중요한 기능 중 하나
+        - 한 페이지에 표시할 수 있는 글의 수를 제한
+        - 스크롤 페이징, 번호 페이징
+        - 번호 페이징
+            1. BoardController.cs Index() 액션메서드 내 FromSql()로 변경(비동기 적용 안됨, 비동기 부분 제거)
+            2. 페이징용 쿼리 작성
+
+                ```sql
+                SELECT *
+                  FROM (
+                          SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) AS rowNum
+                               , Id
+                               , Name
+                               , UserId
+                               , Title
+                               , Contents
+                               , Hit
+                               , RegDate
+                               , ModDate
+                            FROM Board
+                        ) AS base
+                  WHERE base.rowNum BETWEEN 1 AND 10 -- 1과 10에 10씩 더하면 다음 페이지를 조회 쿼리
+                ```
+    4. HTML 에디터
     5. 회원가입, 로그인....
     6. 관리자모드/페이지
 
