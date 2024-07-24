@@ -442,10 +442,16 @@ IoT 개발자과정 ASP.NET 리포지토리
         5. Program.cs에 로그인 세션 설정
         6. _layout.cshtml 로그인/로그아웃 메뉴 추가
         7. HomeController.cs Login/Logout 액션메서드 작성
-        8. Login.cshtml 
-        9. Register.cshtml 회원가입 페이지
+        8. Login() 액션메서드 마우스오른쪽 버튼 뷰생성 Login.cshtml
+        9. bootstrap 사이트에서 예제 파일 다운로드
+        10. sign-in 폴더 내 index.html. sign-in.css Static경로(wwwroot) 복사
+        11. Login.cshtml을 위의 파일 참조해서 수정
+        12. HomeController.cs 에 Register() 액션메서드 작성
+        13. Register.cshtml 회원가입 페이지 생성
 
-
+## 13일차
+- ASP.NET Core 포트폴리오 웹사이트, MyPortfolio
+    1. 회원가입 계속...
     3. 이력서, 프로젝트, 컨텍트 페이지 구현하기
     4. 관리자모드/페이지
     5. 자신 컴퓨터 IIS 서버에 웹사이트 올리기
