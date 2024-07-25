@@ -457,6 +457,8 @@ IoT 개발자과정 ASP.NET 리포지토리
         3. Login.cshtml에 C# Razor tag로 변경
         4. HomeController.cs Login Post 메서드 작성
         5. Logout Get메서드 추가
+
+        https://github.com/user-attachments/assets/984470eb-6088-4ccc-b087-4b3170ec7489
     
     3. 이력서, 프로젝트, 컨텍트 페이지 DB연동하기
     4. 관리자모드/페이지??
