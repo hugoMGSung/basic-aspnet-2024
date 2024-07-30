@@ -610,8 +610,17 @@ IoT 개발자과정 ASP.NET 리포지토리
         - Views/Home/Project.cshtml Db연동 내용 추가 -> 프로젝트에 DB내용 표시
 
     2. 프로젝트 이미지 올리기
-        - 이미지 올리기 중간 모델(클래스) 하나 필요 - TempProject 클래스(다시!)        
-        - Project.cshtml 부트스트랩 클래스 수정
+        - /Models/Project.cs에 Project 클래스와 파일업로드 중간단게 TempProject 클래스 작성
+        - /Controller/ProjectController.cs 수정(IWebHostEnvironment 추가)
+        - UploadImageFile() 메서드 추가 작성
+        - /Views/Project/Create.cshtml에 @model MyPortfolio.Models.Project 를 @model MyPortfolio.Models.TempProject로 변경
+        - 및 나머지 내용 수정
+        - /Views/Project/Edit.cshtml에 @model MyPortfolio.Models.Project 를 @model MyPortfolio.Models.TempProject로 변경
+        - 및 나머지 내용 수정
+
+        - 실행확인
+
+        <img src="https://raw.githubusercontent.com/hugoMGSung/basic-aspnet-2024/main/images/an0007.png" width="700">
 
     2. Contact 메일보내기(네이버 연동)
         - (구글)네이버 동일 - 메일계정 2단계보안 설정
